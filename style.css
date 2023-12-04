@@ -1,0 +1,29 @@
+body{
+    font-family: "Neuropol x";
+    letter-spacing: 2px;
+    padding: 20px;
+    font-size: 22px;
+    background:white;
+    color: black;
+    text-shadow: 0 0 10px #00FFFF;
+
+}
+span{
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker{
+    50%{
+        opacity: 0;
+        
+    }
+}
+/* .container{
+    width: 300px;
+    margin: 10px 20px 80px 90px;
+    padding: 50px;
+    box-shadow: 0px 0px 0px gray;
+    text-align: left;
+    background-color: rosybrown;
+    justify-content: center;
+    align-items: center;
+} */

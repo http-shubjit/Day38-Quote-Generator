@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="typedtext">
+
+
+</div>
+    <script>
+
+var quotearray = [];
+var index = 0;
+var textposition = 0;
+var flag = true;
+var destination = document.getElementsByClassName("typedtext")[0]; // Add [0] to select the first element
+
+window.addEventListener('load', typewritter);
+
+function loadquote() {
+    const url = "https://api.quotable.io/random";
+    fetch(url)
+        .then(response => {
+            if (!response.ok) throw Error(response.statusText);
+            return response.json();
+        })
+        .then(data => {
+            quotearray[index] = data.content;
+        });
+}
+
+function typewritter() {
+    if (flag) {
+        loadquote();
+        quotearray[index] += ' ';
+        flag = false;
+    }
+
+    destination.innerHTML = quotearray[index].substring(0, textposition) + '<span>\u25AE</span>';
+
+    if (textposition++ != quotearray[index].length) {
+        setTimeout(typewritter, 100);
+    } else {
+        quotearray[index] = ' ';
+        setTimeout(typewritter, 3000);
+        textposition = 0;
+        flag = true;
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+raka
+    </div>
+</body>
+</html> -->
